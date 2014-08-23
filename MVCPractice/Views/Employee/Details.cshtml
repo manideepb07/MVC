@@ -1,0 +1,37 @@
+﻿@model MVCPractice.Models.EmployeeModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Employee Details</h2>
+
+<table style="font-family:'Comic Sans MS'">
+    <tr>
+        <td>
+            <b>
+                Employee ID:
+            </b>
+        </td>
+        <td>@Model.ID</td>
+    </tr>
+    <tr>
+        <td>
+            <b>
+                Name:
+            </b>
+        </td>
+        <td>@Model.NAME</td>
+    </tr>
+    <tr>
+        <td><b>City: </b></td>
+        <td>@Model.City</td>
+    </tr>
+    <tr>
+        <td><b>Sex:</b></td>
+        <td>@Model.Gender</td>
+    </tr>
+</table>
+<br/>
+@Html.ActionLink("Back to Emp List", "Index", new { departmentID = @Model.DepartmentID })
+

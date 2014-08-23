@@ -12,14 +12,18 @@ namespace MVCPractice.Controllers
         //
         // GET: /Employee/
 
-        public ActionResult Index()
+        public ActionResult Index(int departmentID)
         {
-            EmployeeModels employee = new EmployeeModels();
-            employee.EmployeeID = 1;
-            employee.Name = "Mani";
-            employee.City = "Hyderabad";
-            employee.sex = "Male";
-            return View(employee);
+            EmployeeContext empContext = new EmployeeContext();
+            List<EmployeeModels> empModel = empContext.Employee.Where(emp => emp.DepartmentID == departmentID).ToList();
+            return View(empModel);
+        }
+
+        public ActionResult Details(int ID)
+        {
+            EmployeeContext empContext = new EmployeeContext();
+            EmployeeModels empModel = empContext.Employee.Single(emp => emp.ID == ID);
+            return View(empModel);
         }
 
     }

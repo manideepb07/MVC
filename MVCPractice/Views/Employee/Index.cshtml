@@ -1,30 +1,20 @@
-﻿@model MVCPractice.Models.EmployeeModels
+﻿@model IEnumerable<MVCPractice.Models.EmployeeModels>
+           @using MVCPractice.Models
 
 @{
-    ViewBag.Title = "Employee Details";
+    ViewBag.Title = "Employee List";
 }
 
-<h2>Employee Details</h2>
+<h2>Employee List</h2>
 
-<table style="font-family:'Comic Sans MS'">
-    <tr>
-        <td><b>
-            Employee ID:
-            </b></td>
-        <td>@Model.EmployeeID</td>
-    </tr>
-    <tr>
-        <td><b>
-            Name:
-            </b></td>
-        <td>@Model.Name</td>
-    </tr>
-    <tr>
-        <td><b>City: </b></td>
-        <td>@Model.City</td>
-    </tr>
-    <tr>
-        <td><b>Sex:</b></td>
-        <td>@Model.sex</td>
-    </tr>
-</table>
+<div>
+    <ul>
+        @foreach (EmployeeModels emplist in @Model)
+        {
+            <li>
+                @Html.ActionLink(emplist.NAME, "Details", new { id = emplist.ID })
+            </li>
+        }
+    </ul>
+</div>
+@Html.ActionLink("Back to Departments","Index","Department")
